@@ -14,33 +14,11 @@
         http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
 	<context:property-placeholder location="classpath:jdbc.properties" system-properties-mode="OVERRIDE" />
 	<!-- 数据库 -->
-<<<<<<< HEAD:WebContent/WEB-INF/applicationContext.xml
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<!--  
-		<property name="driverClass" value="${jdbcdriverClassName}" />
-		<property name="jdbcUrl" value="${jdbcurl}" />
-		<property name="user" value="${jdbcusername}" />
-		<property name="password" value="${jdbcpassword}" />
-		-->
-		<property name="driverClassName">
-			<value>com.mysql.jdbc.Driver</value>
-		</property>
-		<property name="url">
-			<value>jdbc:mysql://localhost:3306/pioneer</value>
-		</property>
-		<property name="username">
-			<value>root</value>
-		</property>
-		<property name="password">
-			<value>root</value>
-		</property>		
-=======
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="${jdbc.driverClassName}" />
 		<property name="jdbcUrl" value="${jdbc.url}" />
 		<property name="user" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
->>>>>>> 66a1ba33a52f61e748cc20835ce8066e290d26f7:src/pioneer-config.xml
 	</bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
