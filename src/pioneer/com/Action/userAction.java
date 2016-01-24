@@ -1,7 +1,5 @@
 package pioneer.com.Action;
 
-
-
 import java.util.List;
 import java.util.Map;
 
@@ -36,9 +34,9 @@ public class userAction {
 	}
 	public String usersList(){
 		List<Users> users=userService.getUserlList();
-//		for(Users u:users){
-//			System.out.println(u.getId()+"\t"+u.getUsername()+"\t"+u.getPwd()+"\t"+u.getQq());
-//		}
+		for(Users u:users){
+			System.out.println(u.getId()+"\t"+u.getUsername()+"\t"+u.getPwd()+"\t"+u.getQq());
+		}
 		ActionContext ac=ActionContext.getContext();
 		Map rq=(Map)ac.get("request");
 		rq.put("users", users);

@@ -15,10 +15,24 @@
 	<context:property-placeholder location="classpath:jdbc.properties" system-properties-mode="OVERRIDE" />
 	<!-- 数据库 -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClass" value="${jdbc.driverClassName}" />
-		<property name="jdbcUrl" value="${jdbc.url}" />
-		<property name="user" value="${jdbc.username}" />
-		<property name="password" value="${jdbc.password}" />
+		<!--  
+		<property name="driverClass" value="${jdbcdriverClassName}" />
+		<property name="jdbcUrl" value="${jdbcurl}" />
+		<property name="user" value="${jdbcusername}" />
+		<property name="password" value="${jdbcpassword}" />
+		-->
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:mysql://localhost:3306/pioneer</value>
+		</property>
+		<property name="username">
+			<value>root</value>
+		</property>
+		<property name="password">
+			<value>root</value>
+		</property>		
 	</bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
@@ -45,8 +59,9 @@
 	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-
 	<context:component-scan base-package="pioneer.com" />
 	<tx:annotation-driven />
+	<!-- 基于aciotn管理 -->
+	<import resource="action_manager.xml"/>
 	
 </beans> 
