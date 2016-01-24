@@ -26,10 +26,10 @@ public class userAction {
 
 	public String registerUsers(){
 		// TODO Auto-generated method stub
-//		System.out.println("username:"+username);
-//		System.out.println("pwd:"+password);
-//		System.out.println("email"+email);
-//		System.out.println("qq:"+qq);
+		System.out.println("username:"+username);
+		System.out.println("pwd:"+password);
+		System.out.println("email"+email);
+		System.out.println("qq:"+qq);
 		Users user=new Users(id,username,password,  email, qq);
 		userService.saveUser(user);
 		return "success";
