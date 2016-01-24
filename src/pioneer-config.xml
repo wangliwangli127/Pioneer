@@ -48,6 +48,4 @@
 	<context:component-scan base-package="pioneer.com" />
 	<tx:annotation-driven />
 	<!-- 基于aciotn管理 -->
-	<import resource="action_manager.xml"/>
-	
 </beans> 
