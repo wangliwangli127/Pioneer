@@ -26,6 +26,7 @@
 			<td><a href="deluser?userid=${user.id}">删除</a></td>
 		</tr>
 	</c:forEach>
+	测试
 </table>
 </body>
 </html>
