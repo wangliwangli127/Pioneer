@@ -15,4 +15,32 @@
          <action name="deluser"   class="userAction" method="delUser">  
         </action>       
     </package>  
+    <package name="manager" namespace="/" extends="struts-default">  
+       <!-- 定义一个登陸驗證拦截器 -->
+		<interceptors>
+			<interceptor name="AuthLoginInterceptor" class="pioneer.com.utils.struts.AuthLoginInterceptor"></interceptor>
+			<!-- 拦截器栈 -->
+			<interceptor-stack name="mydefautStack">
+				<interceptor-ref name="defaultStack"/>
+				<interceptor-ref name="AuthLoginInterceptor"/>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="mydefautStack"></default-interceptor-ref>
+		<global-results>
+			<result name="login">/index.jsp</result><!-- 
+           	<result name="error">/error.jsp</result>
+           	<result name="checkedresult">/checkedresult.jsp</result>
+           	<result name="ajax">/ajax.jsp</result> -->
+        </global-results>
+        
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings> 
+		<action name="login" class="pioneer.com.Action.UserAction" method="login">  
+            <result name="success">main.jsp</result>  
+            <result name="fail">index.jsp</result>  
+        </action>     
+    </package>
+    <include file="pioneer/com/utils/struts/user.xml"></include>  
+ 
 </struts>
