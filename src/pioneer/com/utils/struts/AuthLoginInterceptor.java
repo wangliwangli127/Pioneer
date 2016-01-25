@@ -16,10 +16,10 @@ public class AuthLoginInterceptor extends AbstractInterceptor {
 	@Override
 	public String intercept(ActionInvocation arg0) throws Exception {
 		Object obj = ActionContext.getContext().getSession().get(Constants.SESSION_USER);
-		if(obj==null){
-			ActionContext.getContext().put("timeout","登陆超时。");
-			return "login";
-		}
+//		if(obj==null){
+//			ActionContext.getContext().put("timeout","登陆超时。");
+//			return "login";
+//		}
 		return arg0.invoke();
 	}
 	

@@ -3,18 +3,6 @@
 	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>  
-    <package namespace="/" name="struts2" extends="struts-default">  
-       <action name="register"   class="useraction" method="registerUsers">  
-            <result name="success">testsuccess.jsp</result>  
-            <result name="input">index.jsp</result>  
-        </action>
-        <action name="selectall" class="useraction" method="usersList">  
-            <result name="success">list.jsp</result>  
-            <result name="input">index.jsp</result>  
-        </action>
-         <action name="deluser"   class="userAction" method="delUser">  
-        </action>       
-    </package>  
     <package name="manager" namespace="/" extends="struts-default">  
        <!-- 定义一个登陸驗證拦截器 -->
 		<interceptors>
