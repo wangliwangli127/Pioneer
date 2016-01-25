@@ -12,8 +12,8 @@
 		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
         http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
-	<!-- 数据库 -->
-	<bean id="useraction" class="pioneer.com.Action.userAction">
+	<!-- 配置所有的aciont和dao,service -->
+	<bean id="useraction" class="pioneer.com.Action.UserAction">
 		<property name="userService" ref="userService"/>
 	</bean>
 	<bean id="userService" class="pioneer.com.ServiceImpl.UserServiceImpl">
