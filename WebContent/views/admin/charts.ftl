@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">  
-    <title>Visual Admin Dashboard - Data Visualization</title>
+    <title>后台管理</title>
     <meta name="description" content="">
     <meta name="author" content="templatemo">
     
@@ -14,7 +14,7 @@
     <link href="../css/templatemo-style.css" rel="stylesheet">
     
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!-- WARNING: Respond.js doesn't work if you viSSew the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -33,18 +33,9 @@
       <!--end left-->
       <!-- Main content --> 
       <div class="templatemo-content col-1 light-gray-bg">
-        <div class="templatemo-top-nav-container">
-          <div class="row">
-            <nav class="templatemo-top-nav col-lg-12 col-md-12">
-              <ul class="text-uppercase">
-                <li><a href="" class="active">Admin panel</a></li>
-                <li><a href="">Dashboard</a></li>
-                <li><a href="">Overview</a></li>
-                <li><a href="login.html">Sign in form</a></li>
-              </ul>  
-            </nav> 
-          </div>
-        </div>
+        <!--header-->
+          <#include "head.ftl">
+        <!--end header-->
         <div class="templatemo-content-container">         
           <div class="templatemo-content-widget white-bg">
             <h2 class="margin-bottom-10">Data Visualization</h2>

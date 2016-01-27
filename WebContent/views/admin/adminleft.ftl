@@ -26,7 +26,7 @@
             <li><a href="/Pioneer/admin_maps/" id="id4"><i class="fa fa-map-marker fa-fw"></i>Maps</a></li>
             <li><a href="/Pioneer/admin_users/" id="id5"><i class="fa fa-users fa-fw"></i>Manage Users</a></li>
             <li><a href="/Pioneer/admin_preferences/" id="id6"><i class="fa fa-sliders fa-fw"></i>Preferences</a></li>
-            <li><a href="/Pioneer/admin_login/" id="id7"><i class="fa fa-eject fa-fw"></i>Sign Out</a></li>
+            <li><a href="/Pioneer/admin_login/" id="id7"><i class="fa fa-eject fa-fw"></i>Sign Out</a></li> 
           </ul>  
         </nav>
       </div>
