@@ -57,16 +57,9 @@ public class UserAction {
 		u.setId(id);
 		userService.deleteUsers(u);
 		return null;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
+		
+		
 	public UserService getUserService() {
 		return userService;
 	}
