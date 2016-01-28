@@ -183,7 +183,7 @@
               <div class="media margin-bottom-30">
                 <div class="media-left padding-right-25">
                   <a href="#">
-                    <img class="media-object img-circle templatemo-img-bordered" src="images/person.jpg" alt="Sunset">
+                    <img class="media-object img-circle templatemo-img-bordered" src="../img/person.jpg" alt="Sunset">
                   </a>
                 </div>
                 <div class="media-body">
@@ -220,7 +220,7 @@
             </div>
             <div class="templatemo-content-widget white-bg col-1 text-center templatemo-position-relative">
               <i class="fa fa-times"></i>
-              <img src="images/person.jpg" alt="Bicycle" class="img-circle img-thumbnail margin-bottom-30">
+              <img src="../img/person.jpg" alt="Bicycle" class="img-circle img-thumbnail margin-bottom-30">
               <h2 class="text-uppercase blue-text margin-bottom-5">Paul Smith</h2>
               <h3 class="text-uppercase margin-bottom-70">Managing Director</h3>
               <div class="templatemo-social-icons-container">
@@ -236,7 +236,7 @@
               </div>
             </div>
             <div class="templatemo-content-widget white-bg col-1 templatemo-position-relative templatemo-content-img-bg">
-              <img src="images/sunset-big.jpg" alt="Sunset" class="img-responsive content-bg-img">
+              <img src="../img/sunset-big.jpg" alt="Sunset" class="img-responsive content-bg-img">
               <i class="fa fa-heart"></i>
               <h2 class="templatemo-position-relative white-text">Sunset</h2>
               <div class="view-img-btn-wrap">
@@ -268,13 +268,5 @@
     <!-- JS -->
     <script type="text/javascript" src="../js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
     <script type="text/javascript" src="../js/templatemo-script.js"></script>      <!-- Templatemo Script -->
-    <script>
-      $(document).ready(function(){
-        // Content widget with background image
-        var imageUrl = $('img.content-bg-img').attr('src');
-        $('.templatemo-content-img-bg').css('background-image', 'url(' + imageUrl + ')');
-        $('img.content-bg-img').hide();        
-      });
-    </script>
   </body>
 </html>
