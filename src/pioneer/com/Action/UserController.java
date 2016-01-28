@@ -17,7 +17,7 @@ import pioneer.com.utils.Constants;
 import com.opensymphony.xwork2.ActionContext;
 @Controller
 public class UserController {
-	
+
 	@RequestMapping("/admin_index")
 	public ModelAndView index(HttpServletRequest request){
 		ModelAndView models = new ModelAndView("index");
@@ -27,7 +27,6 @@ public class UserController {
 	public ModelAndView charts()
 	{
 		ModelAndView models = new ModelAndView("charts");
-		System.out.println("admin_chars");
 		return models;
 
 	}
