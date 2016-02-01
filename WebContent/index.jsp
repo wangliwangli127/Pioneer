@@ -1,1 +1,1 @@
-<%response.sendRedirect("/Pioneer/admin_login/");%>
+<%response.sendRedirect("/Pioneer/index/");%>

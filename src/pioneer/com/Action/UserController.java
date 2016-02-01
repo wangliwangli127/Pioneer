@@ -18,42 +18,22 @@ import com.opensymphony.xwork2.ActionContext;
 @Controller
 public class UserController {
 
-	@RequestMapping("/admin_index")
+	@RequestMapping("/index")
 	public ModelAndView index(HttpServletRequest request){
-		ModelAndView models = new ModelAndView("index");
+		ModelAndView models = new ModelAndView("userlogin");
 		return models;
 	}
-	@RequestMapping("/admin_charts")
-	public ModelAndView charts()
+	@RequestMapping("loginsucc")
+	public ModelAndView loinsucc()
 	{
-		ModelAndView models = new ModelAndView("charts");
+		ModelAndView models = new ModelAndView("loginsucc");
+		return models;
+	}
+	@RequestMapping("userinfo")
+	public ModelAndView setuserinfo(){
+		ModelAndView models=new ModelAndView("userinfo");
+		System.out.println("this is a setuserinfo");
 		return models;
 
-	}
-	@RequestMapping("/admin_dataVisualization")
-	public ModelAndView dataVisualization(){
-		ModelAndView models = new ModelAndView("charts");
-		return models;
-	}
-	@RequestMapping("/admin_maps")
-	public ModelAndView maps(){
-		ModelAndView models = new ModelAndView("maps");
-		return models;
-
-	}
-	@RequestMapping("/admin_users")
-	public ModelAndView managesUsers(){
-		ModelAndView models =new ModelAndView("manageusers");
-		return models;
-	}
-	@RequestMapping("/admin_preferences")
-	public ModelAndView preference(){
-		ModelAndView models =new ModelAndView("preferences");
-		return models;
-	}
-	@RequestMapping("/admin_login")
-	public ModelAndView login(){
-		ModelAndView models=new ModelAndView("login");
-		return models;
 	}
 }
