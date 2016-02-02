@@ -1,20 +1,13 @@
 package pioneer.com.Action;
 
-import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.struts2.ServletActionContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
-import pioneer.com.Entity.Users;
-import pioneer.com.Service.UserService;
-import pioneer.com.utils.Constants;
-
-import com.opensymphony.xwork2.ActionContext;
 @Controller
 public class UserController {
 
@@ -23,17 +16,49 @@ public class UserController {
 		ModelAndView models = new ModelAndView("userlogin");
 		return models;
 	}
-	@RequestMapping("loginsucc")
+	@RequestMapping("/loginsucc")
 	public ModelAndView loinsucc()
 	{
 		ModelAndView models = new ModelAndView("loginsucc");
 		return models;
 	}
-	@RequestMapping("userinfo")
+	@RequestMapping("/userinfo")
 	public ModelAndView setuserinfo(){
 		ModelAndView models=new ModelAndView("userinfo");
-		System.out.println("this is a setuserinfo");
 		return models;
 
+	}
+	@RequestMapping("/userregister")
+	public ModelAndView register(){
+		ModelAndView modles = new ModelAndView("userregister");
+		return modles;
+	}
+	
+	@RequestMapping("/mystat")
+	public ModelAndView my(){
+		ModelAndView models=new ModelAndView("my");
+		return models;
+	}
+	@RequestMapping(value="/ajaxrelation",method= RequestMethod.POST)
+	@ResponseBody
+	public String relation(){
+		StringBuffer sb=new StringBuffer();
+		sb.append("{");
+		sb.append("\"username\":\"sw\",");
+		sb.append("\"browsed_times\":5,");
+		sb.append("\"praised_times\":5");
+		sb.append("}");
+ 		return sb.toString();
+	}
+	@RequestMapping(value="/ajaxmystate",method= RequestMethod.POST)
+	@ResponseBody
+	public String ajaxmystate(){
+		StringBuffer sb=new StringBuffer();
+		sb.append("{");
+		sb.append("\"username\":\"wl\",");
+		sb.append("\"browsed_times\":3,");
+		sb.append("\"praised_times\":3");
+		sb.append("}");
+ 		return sb.toString();
 	}
 }

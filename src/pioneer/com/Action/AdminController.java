@@ -1,20 +1,13 @@
 package pioneer.com.Action;
 
-import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.struts2.ServletActionContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import pioneer.com.Entity.Users;
-import pioneer.com.Service.UserService;
-import pioneer.com.utils.Constants;
 
-import com.opensymphony.xwork2.ActionContext;
 @Controller
 public class AdminController {
 
@@ -28,7 +21,6 @@ public class AdminController {
 	{
 		ModelAndView models = new ModelAndView("charts");
 		return models;
-
 	}
 	@RequestMapping("/admin_dataVisualization")
 	public ModelAndView dataVisualization(){
@@ -39,7 +31,6 @@ public class AdminController {
 	public ModelAndView maps(){
 		ModelAndView models = new ModelAndView("maps");
 		return models;
-
 	}
 	@RequestMapping("/admin_users")
 	public ModelAndView managesUsers(){
