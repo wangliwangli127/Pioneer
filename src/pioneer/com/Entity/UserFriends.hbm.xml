@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-2-3 12:08:40 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="UserFriends" table="user_friends" catalog="pioneer" optimistic-lock="version">
+        <id name="fid" type="java.lang.Integer">
+            <column name="fid" />
+            <generator class="identity" />
+        </id>
+        <property name="uid" type="int">
+            <column name="uid" not-null="true" />
+        </property>
+        <property name="uinviteId" type="int">
+            <column name="uinvite_id" not-null="true" />
+        </property>
+        <property name="isInvited" type="java.lang.Integer">
+            <column name="is_invited" />
+        </property>
+    </class>
+</hibernate-mapping>

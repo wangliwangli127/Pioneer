@@ -1,9 +1,3 @@
-<#include "template/start.ftl">
-	<script type="text/javascript">
-		$(window).load(function() {
-		 show(0,'my',1)
-		});
-	</script>
 <div class="right_item" data-favour="true">
 	<div class="right_item_content">
 		<ul>
@@ -52,4 +46,3 @@
 		</div>
 	</div>
 </div>
-<#include 'template/end.ftl'>

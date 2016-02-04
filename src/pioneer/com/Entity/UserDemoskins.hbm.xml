@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-2-3 12:08:40 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="UserDemoskins" table="user_demoskins" catalog="pioneer" optimistic-lock="version">
+        <id name="sid" type="java.lang.Integer">
+            <column name="sid" />
+            <generator class="identity" />
+        </id>
+        <property name="sname" type="string">
+            <column name="sname" length="20" not-null="true" />
+        </property>
+        <property name="scontent" type="string">
+            <column name="scontent" length="4000" not-null="true" />
+        </property>
+        <property name="pid" type="java.lang.Integer">
+            <column name="pid" />
+        </property>
+    </class>
+</hibernate-mapping>

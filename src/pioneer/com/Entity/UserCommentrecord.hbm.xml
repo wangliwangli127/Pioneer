@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-2-3 12:08:40 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="UserCommentrecord" table="user_commentrecord" catalog="pioneer" optimistic-lock="version">
+        <id name="cid" type="java.lang.Integer">
+            <column name="cid" />
+            <generator class="identity" />
+        </id>
+        <property name="ccotent" type="string">
+            <column name="ccotent" length="2000" />
+        </property>
+        <property name="commentedUid" type="int">
+            <column name="commented_uid" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

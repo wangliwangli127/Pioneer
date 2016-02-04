@@ -2,14 +2,22 @@ package pioneer.com.ServiceImpl;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import pioneer.com.Dao.UserDao;
+import pioneer.com.Dao.UserMoodDao;
+import pioneer.com.Entity.UserMood;
 import pioneer.com.Entity.Users;
 import pioneer.com.Service.UserService;
 /*
  * 业务逻辑实现层,复杂的业务逻辑实现的部分
  */
 public class UserServiceImpl implements UserService {
+	@Resource(name="userDao")
 	private UserDao userDao;
+	
+	@Resource(name="userMoodDao")
+	private UserMoodDao  userMoodDao;
 	@Override
 	public List<Users> getUserlList() {
 		// TODO Auto-generated method stub
@@ -36,4 +44,9 @@ public class UserServiceImpl implements UserService {
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
 	}
+	@Override
+	public List<UserMood> getMoodlistByUid(int uid) {
+		return userMoodDao.selectUsersMoodByuid(uid);
+	}
+	
 }

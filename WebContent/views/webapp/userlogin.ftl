@@ -37,9 +37,9 @@ $(document).ready(function(c) {
 		<img src="../img/avtar.png" />
 	</div>
 	<form method="post" action="/Pioneer/loginsucc/">
-		<input type="text" class="text" value="Username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" >
+		<input type="text" class="text" name="username" value="Username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" >
 			<div class="key">
-		<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+		<input type="password" value="Password"  name="pwd" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
 			</div>
 			
 		<div class="signin">

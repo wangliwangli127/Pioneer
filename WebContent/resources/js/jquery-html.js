@@ -12,16 +12,7 @@ function show(i,name,k){
 		});
 	//a标签 获取内容的action
 	if("all" == name){//获取所有动态
-		$.ajax({
-			type:"post",
-			url:"all.html",
-			async:false,
-			dataType:"html",
-			contentType: 'application/json; charset=utf-8',
-			success:function(data){
-				$("#mainList").html(data);
-			}
-		});
+ 
 	}else if("my" == name || "mystate" == name){//个人动态-我的发言
 		$.ajax({
 			type:"post",
@@ -130,6 +121,7 @@ function loadPage(name, id, page) {
 				for(var i=0;i<more.length;i++){
 					$(".loading_btn:eq("+i+")").hide();
 				}
+
 				$("#mainList").append(data);
 			}
 		});
