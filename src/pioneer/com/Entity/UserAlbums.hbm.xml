@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-2-3 12:08:40 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="UserAlbums" table="user_albums" catalog="pioneer" optimistic-lock="version">
+        <id name="aid" type="java.lang.Integer">
+            <column name="aid" />
+            <generator class="identity" />
+        </id>
+        <property name="cateId" type="java.lang.Integer">
+            <column name="cate_id" />
+        </property>
+        <property name="browsedTime" type="java.lang.Integer">
+            <column name="browsed_time" />
+        </property>
+        <property name="browsedTimes" type="java.lang.Integer">
+            <column name="browsed_times" />
+        </property>
+        <property name="quoteUid" type="int">
+            <column name="quote_uid" not-null="true" />
+        </property>
+        <property name="quotePhoneUrl" type="string">
+            <column name="quote_phone_url" length="30" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -42,7 +42,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao{
 	@Override
 	public Users getUserById(String username) {
 		// TODO Auto-generated method stub
-		List<Users> entities=getHibernateTemplate().find("from Users where username="+username);  
+		List<Users> entities=getHibernateTemplate().find("from Users where username='"+username+"'");  
         if(entities.size()>0){  
             Users user=entities.get(0);  
             return user;  

@@ -1,0 +1,123 @@
+#系统设置
+p_systeminfo(s_id,u_id,pagesize,is_publicinfo,is_shiedsomeones)
+#短信通知
+p_message(from_uid,to_uid,content,result,created_time)
+#login
+p_users(u_id,username,email,pwd)
+#皮肤
+p_skins(skid,uid,contenthtml)
+#皮肤设置
+p_homesettings(id,u_id,skid,backgroundpic,backgroundmusic,models)
+#个人信息
+p_profile(p_id,u_id,sex,age,is_marry,is_single,homesiteurl,headpicurl)
+#朋友圈
+p_friendRelation(id,f_uid,u_id,is_shield,is_friends,created_time,invite_content,is_pass)
+#个人中心
+p_moods(m_id,f_uid,mcontent,created_time,is_public,is_forward)
+p_clickmoods(m_id,browsedTimes,praisedTimes,comment,clickdate)
+#相册
+p_phonocate(cateid,name,uid,is_public,password)
+p_album(id,cateid,picurl)
+p_clickalbum(a_id,browsedTimes,praisedTimes,comment,clickdate)
+#日志
+p_dailyRecord(d_id,record,is_public,password)
+p_clickdailyRecord(r_id,browsedTimes,praisedTimes,comment,clickdate)
+
+页面设置(包含个人的信息等)
+		涉及表
+			p_skins(skid,uid,contenthtml)
+			p_homesettings(id,u_id,skid,backgroundpic,backgroundmusic,models)
+		功能
+			更换皮肤
+			模块设置
+			DIY背景图片，包括flash等
+			上传背景音乐
+系统设置
+		涉及表:
+			p_systeminfo(s_id,u_id,pagesize,is_publicinfo,is_shiedslist,pwd_questions,is_publicspace,is_befriend)
+			p_profile(p_id,u_id,sex,age,is_marry,is_single,homesiteurl,headpicurl)
+		功能：
+			个人信息密码修改
+			是否公开个人信息
+			屏蔽列表
+			是否能被别人添加好友
+			空间是否对所有人公开
+			是否允许被通过朋友圈推荐好友
+			是否允许向其他人推荐自己
+			密码密保问题设置
+			每页显示个数设置
+朋友圈
+		显示非屏蔽朋友的状态,发表时间倒序的形式（默认20个）
+		涉及表:
+			1,p_friendRelation(id,f_uid,u_id,is_shield,is_friends,created_time,invite_content,is_pass),
+			2,p_moods(m_id,f_uid,mcontent,created_time,is_public)
+			3,p_clickmoods(m_id,browsedTimes,praisedTimes,comment,clickdate)
+			4,p_systeminfo(uid,pagesize)
+			5,p_message(from_uid,to_uid,content,result,created_time)
+		功能实现:
+			1,login以后,通过uid 查询p_friendsRelation(uid=uid,is_shield=0,is_friends=1)的f_uid,根据f_uid查询p_moods中的记录显示
+			  同时，根据to_uid=uid查看p_message中的内容，查看收到的消息
+			2,每次显示的条数从p_systeminfo.pagesize获取即可
+			3.当单击"加载更多",发送ajax请求,追加数据即可
+			4,单击点赞，评论，或转发时
+				点赞：ajax请求，记录点赞的uid到p_clickmoods中
+				评论:ajax，评论的内容，时间,uid到p_clickmoods中
+				转发:ajax,暂定
+个人中心  
+		最近的发的状态
+		功能：
+			1,显示最近发的状态，默认20条
+			2,删除专题，提醒某人看
+			3,设置状态
+		涉及表:
+			1,p_moods(m_id,f_uid,mcontent,created_time,is_public)
+			2,p_clickmoods(m_id,browsedTimes,praisedTimes,comment,clickdate)
+			3,systeminfo(uid,pagesize)
+			4,p_message(id,from_uid,to_uid,content,result,created_time)
+		功能实现:
+			1,单击个人中心以后,根据uid从p_moods和p_clickmoods中查询用户的说说
+			2,每次显示的条数从systeminfo.pagesize获取显示条数
+			3.当单击"加载更多",发送ajax请求,追加即可
+			4,删除，删除所有的评论，点赞
+			5,自己点赞，评论，或转发时
+				点赞：ajax请求，记录点赞的uid到p_click中
+				评论:ajax，评论的内容，时间,uid到p_click中
+				转发:ajax,暂定		
+			6,提醒某人看，设置提醒某人看这条说说,设置to_uid和from_uid，content="@xx"即可
+加好友
+		涉及表:
+			p_friendRelation(id,f_uid,u_id,is_shield,is_friends,created_time,invite_content,is_pass)
+			p_message(id,from_uid,to_uid,content,result,created_time)
+		功能实现:
+			从p_friendRelation中查询是不是已经朋友，如果是朋友，则提示，否则，
+				1，从p_systeminfo中查询f_uid这个用户的信息，看是个人信息是否公开，否允许添加，如果不允许添加，则提示,
+				2，发送请求，如果通过，则设置is_shield,is_frieds,is_pass后p_friendRelation中添加一条数据，拒绝，则is_pass=0
+				3，无论添加或拒绝，p_message都应该有条消息，推送到用户
+			 			
+发说说	
+		涉及表:
+			1,p_moods(m_id,f_uid,mcontent,created_time,is_public,is_forward)
+		功能实现:
+			插入一条数据到p_moods中，并把当前f_uid=uid,单击发表后发表说说
+			发送说说，设置是否公开，私人
+			设置能否被转载等
+相册展示  
+		功能:
+			上传照片（同上）
+		涉及表:
+			p_phonocate(cateid,name,uid,is_public,password)
+			p_album(id,cateid,picurl)
+			p_clickalbum(a_id,browsedTimes,praisedTimes,comment,clickdate)
+
+发日志
+		功能:
+			日志（同上）
+		涉及表:
+			p_dailyRecord(d_id,record,is_public,password)
+			p_clickdailyRecord(r_id,browsedTimes,praisedTimes,comment,clickdate)		
+提醒:
+		涉及表:
+			p_message
+		功能实现:
+			login后提示空间动态消息	
+其他：待定
