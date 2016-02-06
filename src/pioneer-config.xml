@@ -63,7 +63,14 @@
        <property name="contentType" value="text/html;charset=UTF-8" />   
     </bean>  
     <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">  
-   		<property name="templateLoaderPath" value="/views/admin/"/>
+   		<!--<property name="templateLoaderPath" value="/views/admin/"/>-->
+   		<!--freemarker模板多路径设置-->
+   		<property name="templateLoaderPaths">
+			<list>
+				<value>/views/admin/</value>
+				<value>/views/webapp/</value>
+			</list>
+		</property>
    		<property name="freemarkerSettings">  
 	        <props>  
 	            <prop key="template_update_delay">0</prop>  
