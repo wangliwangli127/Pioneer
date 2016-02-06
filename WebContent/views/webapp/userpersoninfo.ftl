@@ -1,9 +1,3 @@
-<#include "template/start.ftl">
-	<script type="text/javascript">
-		$(window).load(function() {
-		 show(0,'userinfo',2)
-		});
-	</script>			
 <div class="right_item" data-favour="true">
 	<div class="right_item_content">
 		<ul>
@@ -31,5 +25,5 @@
 <div class="clear"></div>
 <div id="mainList2">
 </div>							 
-<#include "template/end.ftl">
+ 
 			           

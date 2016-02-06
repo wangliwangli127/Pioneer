@@ -1,6 +1,6 @@
 //menu ul li a css change id=menuDivId,mainList
 var id = ['menuDivId','mainList'];
-function show(i,name,k){
+function show(i,name,k,uid){
  	var lis = $("#"+id[i]+" ul li");
  	for(var j=0;j<lis.length;j++){
  		$('#'+id[i]+' ul li a:eq('+j+')').removeClass(function() {
@@ -11,39 +11,64 @@ function show(i,name,k){
 		  return 'cur';
 		});
 	//a标签 获取内容的action
-	if("all" == name){//获取所有动态
- 
-	}else if("my" == name || "mystate" == name){//个人动态-我的发言
+	if("userfriends" == name){//朋友圈
+		$.ajax({
+			type:"get",
+			url:"/Pioneer/ajaxfriends/",
+			data:{"uid":uid},
+			contentType: 'text/html',
+			success:function(data){
+				$("#mainList").html(data)					
+			}
+		});	 		
+
+	}else if("userpersonal" == name){//个人动态
 		$.ajax({
 			type:"post",
-			url:"/Pioneer/ajaxmystate/",
+			url:"/Pioneer/ajaxpersonalstat/",
 			async:false,
 			dataType:"html",
-			contentType: 'application/json; charset=utf-8',
+			contentType: 'text/html',
 			success:function(data){
-				var obj=eval("("+data+")")
-				$("#mainList2 .right_item_name a").html(obj["username"]);
-				var g=$("#mainList2 .share_box").find("font")
-				g[0].innerHTML="时间-2013-2-1"
-				g[1].innerHTML="浏览次数-"+obj["browsed_times"]
-				g[2].innerHTML="点赞次数-"+obj["praised_times"]
+				$("#mainList").html(data)					
 			}
-		});
+		});							
+	}else if("userpersonalinfo" == name){//个人信息
+		$.ajax({
+			type:"post",
+			url:"/Pioneer/ajaxpersonalinfo/",
+			async:false,
+			dataType:"html",
+			contentType: 'text/html',
+			success:function(data){
+
+				$("#mainList").html(data)					
+			}
+		});			
 	}else if("myrelation" == name){//个人动态-与我相关
 		$.ajax({
 			type:"post",
-			url:"/Pioneer/ajaxrelation/",
+			url:"/Pioneer/ajaxmyrelation/",
 			async:false,
 			dataType:"html",
+			contentType: 'text/html',
 			success:function(data){
-				var obj=eval("("+data+")")
-				$("#mainList2 .right_item_name a").html(obj["username"]);
-				var g=$("#mainList2 .share_box").find("font")
-				g[0].innerHTML="时间-2012-2-1"
-				g[1].innerHTML="浏览次数-"+obj["browsed_times"]
-				g[2].innerHTML="点赞次数-"+obj["praised_times"]
+				$("#mainList2").html(data)
 			}
 		});
+	}else if("mymoods"== name){//个人动态-我的发言
+
+		$.ajax({
+			type:"post",
+			url:"/Pioneer/ajaxmymoods/",
+			async:false,
+			dataType:"html",
+			contentType: 'text/html',
+			success:function(data){
+				$("#mainList2").html(data)
+			}
+		});
+
 	}else if("userinfo" == name){//获取个人信息
 		$.ajax({
 			type:"post",
@@ -66,8 +91,7 @@ function show(i,name,k){
 		
 	}else if("orders" == name){//获取其他信息
 		
-	}
-	
+	}	
 	
 }
 //menu 滑动css
@@ -106,23 +130,20 @@ function headerGo(){
 	document.documentElement.scrollTop = document.body.scrollTop =0;
 }
 
-//leadpage
-function loadPage(name, id, page) {
+//loadpage
+function loadPage(name, uid, page) {
 	if("all" == name){
 		$.ajax({
-			type:"post",
-			url:"/Pioneer/ajax/",
-			async:false,
-			dataType:"html",
-			contentType: 'application/json; charset=utf-8',
+			type:"get",
+			url:"/Pioneer/ajaxloadmore/",
+			data:{"uid":uid,"page":page},
+			contentType: 'text/html',
 			success:function(data){
-				alert(data)
 				var more = $(".loading_btn");
 				for(var i=0;i<more.length;i++){
 					$(".loading_btn:eq("+i+")").hide();
 				}
-
-				$("#mainList").append(data);
+				$("#mainList").append(data)
 			}
 		});
 	}else if("mystate" == name){

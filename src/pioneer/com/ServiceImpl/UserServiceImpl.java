@@ -48,5 +48,10 @@ public class UserServiceImpl implements UserService {
 	public List<UserMood> getMoodlistByUid(int uid) {
 		return userMoodDao.selectUsersMoodByuid(uid);
 	}
+	@Override
+	public List<UserMood> getMoodlistByUidPage(int uid, int startindex, int pagesize) {
+		// TODO Auto-generated method stub
+		return userMoodDao.getUsersMoodByuidpage(uid, startindex, pagesize);
+	}
 	
 }

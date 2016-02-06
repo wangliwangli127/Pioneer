@@ -14,4 +14,5 @@ public interface UserService {
 	public  boolean deleteUsers(Users user);
 	public  Users getUserByName(String username);
 	public List<UserMood> getMoodlistByUid(int uid);
+	public List<UserMood> getMoodlistByUidPage(int uid,int startindex,int pagesize);
 }
