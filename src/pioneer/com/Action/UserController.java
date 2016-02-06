@@ -1,39 +1,43 @@
 package pioneer.com.Action;
 
+
+import java.io.File;
 import java.util.List;
-import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.annotation.Resource;
 
-import org.apache.struts2.ServletActionContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import pioneer.com.Entity.Users;
 import pioneer.com.Service.UserService;
-import pioneer.com.utils.Constants;
-
-import com.opensymphony.xwork2.ActionContext;
 @Controller
 public class UserController {
+	@Resource(name="userService")
+	private UserService  userservice;
 
 	@RequestMapping("/index")
-	public ModelAndView index(HttpServletRequest request){
+	public ModelAndView index(){
 		ModelAndView models = new ModelAndView("userlogin");
 		return models;
 	}
-	@RequestMapping("loginsucc")
-	public ModelAndView loinsucc()
+	@RequestMapping("/loginsucc")
+	public ModelAndView loinsucc(Users user)
 	{
-		ModelAndView models = new ModelAndView("loginsucc");
-		return models;
+		ModelAndView models = new ModelAndView("users");
+ 		return models.addObject("path", "userfriends.ftl");
+		
 	}
-	@RequestMapping("userinfo")
-	public ModelAndView setuserinfo(){
-		ModelAndView models=new ModelAndView("userinfo");
-		System.out.println("this is a setuserinfo");
-		return models;
+	 
+	@RequestMapping(value="/ajaxmystate",method= RequestMethod.POST)
+	@ResponseBody
+	public String ajaxmystate(){
+		System.out.println(11543545);
+ 
+ 		return String.valueOf(true);  
+	}
 
-	}
 }

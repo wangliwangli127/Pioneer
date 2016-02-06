@@ -14,6 +14,8 @@
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
         http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+	<context:component-scan base-package="pioneer.com.*" />
+	<mvc:annotation-driven />
 	<context:property-placeholder location="classpath:jdbc.properties" system-properties-mode="OVERRIDE" />
 	<!-- 数据库 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
@@ -40,21 +42,26 @@
 			</props>
 		</property>
 	</bean>
-	
 	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<context:component-scan base-package="pioneer.com" />
-	<tx:annotation-driven />
+	
+	<!-- 拦截器 -->
+	<mvc:interceptors>  
+	    <!-- 定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的 -->  
+		<bean class="pioneer.com.intercept.SpringMVCInterceptor"/>  
+	</mvc:interceptors> 
+
 	<!--set view-->
     <bean  class="org.springframework.web.servlet.view.UrlBasedViewResolver">  
        <property name="prefix" value="/WEB-INF/" />  
        <property name="suffix" value=".jsp" />  
        <property name="viewClass" value="org.springframework.web.servlet.view.InternalResourceView"/>  
     </bean>
+    
     <!--set freemarker-->
     <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">  
        <property name="prefix" value=""/>  
@@ -86,5 +93,7 @@
 	<mvc:resources mapping="/css/**"  location="/resources/css/"/>
 	<mvc:resources mapping="/font/**"  location="/resources/font/"/>
 	<mvc:resources mapping="/jqvmap/**"  location="/resources/jqvmap/"/>
-	<mvc:annotation-driven />
+	<!-- 支持上传文件 -->  
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/> 
+	<import resource="ActionManager.xml"/>
 </beans> 

@@ -1,7 +1,7 @@
 <div class="left">
 	<!-- user info -->
 	<div class="recom1 left-menu">
-		欢迎<a href="#">superadmin</a>登陆
+		欢迎<a href="#">${username}</a>登陆
 	</div>
 	<!-- order1 -->
 	<div class="recom2 left-menu">

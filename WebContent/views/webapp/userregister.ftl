@@ -24,7 +24,7 @@ $(document).ready(function(c) {
 });
 </script>
  <!--SIGN UP-->
- <h1>Login Form</h1>
+ <h1>Register Form</h1>
 <div class="login-form">
 	<div class="close"> </div>
 		<div class="head-info">
@@ -37,13 +37,13 @@ $(document).ready(function(c) {
 		<img src="../img/avtar.png" />
 	</div>
 	<form method="post" action="/Pioneer/loginsucc/">
-		<input type="text" class="text" name="username" value="Username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" >
+		<input type="text" class="text" value="用户名/邮箱" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '用户名/邮箱';}" >
 			<div class="key">
-		<input type="password" value="Password"  name="pwd" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+		<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+		<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
 			</div>
-			
 		<div class="signin">
-			<input type="submit" value="Login" onclick="">
+			<input type="submit" value="Register" onclick="">
 		</div>
 	</form>
 </div>

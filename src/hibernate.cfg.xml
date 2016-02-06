@@ -6,6 +6,7 @@
     <session-factory name="sessionFactory">
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
- 		<mapping  resource="pioneer/com/Entity/Users.hbm.xml"/>
-    </session-factory>
+		<mapping resource="pioneer/com/Entity/Users.hbm.xml"/>
+		<mapping resource="pioneer/com/Entity/UserMood.hbm.xml"/>
+    </session-factory> 
 </hibernate-configuration>
