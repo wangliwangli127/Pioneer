@@ -10,4 +10,5 @@ import pioneer.com.Entity.Users;
 public interface UserMoodDao {
 	public List<UserMood>  selectUsersMoodByuid(int uid);
 	public boolean updateMoodBrowsedTimes(UserMood umood);
+	public List<UserMood>  getUsersMoodByuidpage(int uid,int pageindex,int pagesize);
 }

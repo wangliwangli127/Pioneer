@@ -18,7 +18,11 @@
 				<div class="left">
 					<!-- user info -->
 					<div class="recom1 left-menu">
-						欢迎<a href="#">username</a>登陆
+						欢迎<a href="#">${user.username},${user.id}</a>登陆
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<img scr="../css/images/sys.png"/>						
+						<a href="#">系统设置</a>
 					</div>
 					<!-- order1 -->
 					<div class="recom2 left-menu">
@@ -42,32 +46,16 @@
 				<div class="right">
 					<!-- 置顶菜单 -->
 					<!--header-->
-					<div class="menu" id="menuDivId" style="aposition: relative;text-align: left;">
+					<div class="menu" id="menuDivId" style="position: relative;text-align: left;">
 						<ul>
-							<li><a name="menu" href="/Pioneer/ajaxall/">全部状态</a></li>
-							<li><a name="menu" href="#" id="mystat">个人动态</a></li>
-							<li><a name="menu" href="/Pioneer/userinfo/" id="userinfo">个人信息</a></li>
+							<li><a name="menu" href="#" onclick="show(0,'userfriends',0,${user.id});">好友状态</a></li>
+							<li><a name="menu" href="#" onclick="show(0,'userpersonal',1);">个人动态</a></li>
+							<li><a name="menu" href="#" onclick="show(0,'userpersonalinfo',2);">个人信息</a></li>
+							<li><a name="menu" href="#" onclick="alert('待开发')">相册</a></li>
+							<li><a name="menu" href="#" onclick="alert('待开发')">日志</a></li>
 							<li><a name="menu" href="#" onclick="show(0,'orders',3);">其他</a></li>
 						</ul>
 					</div>
-					<script type="text/javascript">
-						$("#mystat").click(function() {
-							$.ajax({
-								type:"post",
-								url:"/Pioneer/ajaxmystate/",
-								async:false,
-								dataType:"html",
-								contentType: 'application/json; charset=utf-8',
-								success:function(data){
-									alert(data)
-									var path="\<# include 'userpersonal.ftl'\>"
-									alert(path)
-									$("#mainList").html(path)
-								}
-							});							
-						});
-					</script>
-
 					<!--end header-->
 					<!-- 右侧自由div -->
 					<div class="colde_top">
@@ -79,7 +67,10 @@
 					<!--end-->
 					<!-- main -->
 					<div id="mainList">
-						<#include '${path}'>	
+						<!--加载朋友圈-->
+						 <script type="text/javascript">
+						 		show(0,'userfriends',0,${user.id});
+						 </script>
 					</div>
 					<div class="bank20"></div>
 				</div>
