@@ -91,7 +91,7 @@ function show(i,name,k,uid){
 		
 	}else if("orders" == name){//获取其他信息
 		
-	}	
+	}
 	
 }
 //menu 滑动css
@@ -178,5 +178,21 @@ function loadPage(name, uid, page) {
 		});
 	}
 }
+//点赞
+function praise(mid,uid) {
+	$.ajax({
+		type:"get",
+		url:"/Pioneer/ajaxpraised/",
+		data:{"mid":mid,"uid":uid},
+		dataType:'text',
+		success:function(data){
+			if (data=="1"){
+				var pobj=document.getElementById("p"+mid);
+				var strlist=pobj.innerHTML.split("-");
+				var times=parseInt(strlist[1])+1;
+				pobj.innerHTML=strlist[0]+"-"+times;
+			}
+		}
+	});	
 
-
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-2-20 10:42:35 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="pioneer.com.Entity.PClickmoods" table="p_clickmoods" catalog="pioneer">
+        <id name="CId" type="java.lang.Integer">
+            <column name="c_id" />
+            <generator class="identity" />
+        </id>
+        <property name="MId" type="int">
+            <column name="m_id" not-null="true" />
+        </property>
+        <property name="UIdList" type="string">
+            <column name="uid_list" length="2000"/>
+        </property>        
+        <property name="browsedTimes" type="java.lang.Integer">
+            <column name="browsedTimes" />
+        </property>
+        <property name="praisedTimes" type="java.lang.Integer">
+            <column name="praisedTimes" />
+        </property>
+        <property name="comment" type="string">
+            <column name="comment" length="200" not-null="true" />
+        </property>
+        <property name="clickdate" type="timestamp">
+            <column name="clickdate" length="19" not-null="true" />
+        </property>
+        <one-to-one name="moods"></one-to-one>
+    </class>
+</hibernate-mapping>

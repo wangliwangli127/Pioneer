@@ -18,7 +18,7 @@
 				<div class="left">
 					<!-- user info -->
 					<div class="recom1 left-menu">
-						欢迎<a href="#">${user.username},${user.id}</a>登陆
+						欢迎<a href="#">${user.username},${user.UId}</a>登陆
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<img scr="../css/images/sys.png"/>						
@@ -48,7 +48,7 @@
 					<!--header-->
 					<div class="menu" id="menuDivId" style="position: relative;text-align: left;">
 						<ul>
-							<li><a name="menu" href="#" onclick="show(0,'userfriends',0,${user.id});">好友状态</a></li>
+							<li><a name="menu" href="#" onclick="show(0,'userfriends',0,${user.UId});">好友状态</a></li>
 							<li><a name="menu" href="#" onclick="show(0,'userpersonal',1);">个人动态</a></li>
 							<li><a name="menu" href="#" onclick="show(0,'userpersonalinfo',2);">个人信息</a></li>
 							<li><a name="menu" href="#" onclick="alert('待开发')">相册</a></li>
@@ -69,7 +69,7 @@
 					<div id="mainList">
 						<!--加载朋友圈-->
 						 <script type="text/javascript">
-						 		show(0,'userfriends',0,${user.id});
+						 		show(0,'userfriends',0,${user.UId});
 						 </script>
 					</div>
 					<div class="bank20"></div>

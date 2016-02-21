@@ -13,15 +13,21 @@
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
         http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
 	<!-- 配置所有的aciont和dao,service -->
+	<!-- users -->
 	<bean id="userService" class="pioneer.com.ServiceImpl.UserServiceImpl">
 		<property name="userDao" ref="userDao"/>
 	</bean>
 	<bean id="userDao" class="pioneer.com.DaoImpl.UserDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	<!-- end -->
+	<!--moods -->
+	<bean id="userMoodService" class="pioneer.com.ServiceImpl.UserMoodsServiceImpl">
+		<property name="userPMoodDao" ref="userMoodDao"></property>
+	</bean>
 	<bean id="userMoodDao" class="pioneer.com.DaoImpl.UserMoodDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	
+	<!-- end -->
 	
 </beans> 

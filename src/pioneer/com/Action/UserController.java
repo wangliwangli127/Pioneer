@@ -1,7 +1,4 @@
 package pioneer.com.Action;
-
- 
-
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -9,48 +6,48 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import pioneer.com.Entity.UserMood;
-import pioneer.com.Entity.Users;
+import pioneer.com.Entity.PMoods;
+import pioneer.com.Entity.PUsers;
+import pioneer.com.Service.UserMoodsService;
 import pioneer.com.Service.UserService;
 
 @Controller
 public class UserController {
 	@Resource(name="userService")
 	private UserService  userservice;
-
+	
+	@Resource(name="userMoodService")
+	private UserMoodsService userPmService;
+	
 	@RequestMapping("/index")
 	public ModelAndView index(){
 		ModelAndView models = new ModelAndView("userlogin");
 		return models;
 	}
-
 	@RequestMapping(value="/loginsucc")
-	public ModelAndView landing(Users user)
+	public ModelAndView landing(PUsers user)
 	{
 		System.out.println("这是login请求:框架");
 		ModelAndView models = new ModelAndView("users");
-		Users u=userservice.getUserByName(user.getUsername());
-		System.out.println("there is error");
+		PUsers u=userservice.getUserByName(user.getUsername());
 		if (u !=null){
 			return models.addObject("user",u);
 		}else{
-			System.out.println("err");
 			return new ModelAndView("redirect:/index/");
 		}
 	}
-
 	//朋友圈
 	@RequestMapping(value="/ajaxfriends",method=RequestMethod.GET)
 	public ModelAndView ajaxloinsucc(String uid)
 	{
 		System.out.println("这是ajax请求:朋友圈"+uid);
 		ModelAndView models = new ModelAndView("userfriends");
-		//List<UserMood> moods=userservice.getMoodlistByUid(Integer.parseInt(uid));
-		List<UserMood> moods=userservice.getMoodlistByUidPage(Integer.parseInt(uid), 0, 5);
-		System.out.println("分页错误,uid"+uid);
- 		return models.addObject("moodlist",moods).addObject("page",1);
+		List<PMoods> moods=userPmService.getMoodlistByUidPage(Integer.parseInt(uid), 0, 5);
+		return models.addObject("moodlist",moods)
+				.addObject("page",1).addObject("uid",uid);
 	}
 	//个人状态
 	@RequestMapping(value="/ajaxpersonalstat",method= RequestMethod.POST)
@@ -80,14 +77,21 @@ public class UserController {
 		ModelAndView models=new ModelAndView("mymoods");
 		return models;
 	}
-
 	//加载默认5条
 	@RequestMapping(value="/ajaxloadmore",method=RequestMethod.GET)
 	public ModelAndView ajaxloadmore(String uid,String page){
-		System.out.println("loadmore"+page);
 		int pageint=Integer.parseInt(page);
 		ModelAndView models=new ModelAndView("userfriends");
-		List<UserMood> moods=userservice.getMoodlistByUidPage(Integer.parseInt(uid), pageint, 5);
-		return models.addObject("moodlist",moods).addObject("page",pageint+1);
+		List<PMoods> moods=userPmService.getMoodlistByUidPage(Integer.parseInt(uid), pageint, 5);
+		return models.addObject("moodlist",moods)
+				.addObject("page",pageint+1).addObject("uid",uid);
+	}
+	//点赞
+	@RequestMapping(value="/ajaxpraised",method=RequestMethod.GET)
+	@ResponseBody
+	public String ajaxpraised(String mid,String uid){
+		System.out.println(mid+","+uid);
+		boolean rs=userPmService.updatePraiseTime(Integer.parseInt(mid),Integer.parseInt(uid));
+		return rs ?"1":"0";
 	}
 }
