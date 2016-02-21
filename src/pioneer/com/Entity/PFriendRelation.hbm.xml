@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-2-20 10:42:35 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="pioneer.com.Entity.PFriendRelation" table="p_friendRelation" catalog="pioneer">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="UUid" type="int">
+            <column name="u_uid" not-null="true" />
+        </property>
+        <property name="FUid" type="int">
+            <column name="f_uid" not-null="true" />
+        </property>
+        <property name="isShield" type="java.lang.Integer">
+            <column name="is_shield" />
+        </property>
+        <property name="isFriends" type="java.lang.Integer">
+            <column name="is_friends" />
+        </property>
+        <property name="createdTime" type="timestamp">
+            <column name="created_time" length="19" not-null="true" />
+        </property>
+        <property name="inviteContent" type="string">
+            <column name="invite_content" length="200" />
+        </property>
+        <property name="isPass" type="java.lang.Integer">
+            <column name="is_pass" />
+        </property>
+    </class>
+</hibernate-mapping>

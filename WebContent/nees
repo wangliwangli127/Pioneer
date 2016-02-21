@@ -51,7 +51,7 @@ p_clickdailyRecord(r_id,browsedTimes,praisedTimes,comment,clickdate)
 		涉及表:
 			1,p_friendRelation(id,f_uid,u_id,is_shield,is_friends,created_time,invite_content,is_pass),
 			2,p_moods(m_id,f_uid,mcontent,created_time,is_public)
-			3,p_clickmoods(m_id,browsedTimes,praisedTimes,comment,clickdate)
+			3,p_clickmoods(c_id,u_id,mc_id,browsedTimes,praisedTimes,comment,clickdate)
 			4,p_systeminfo(uid,pagesize)
 			5,p_message(from_uid,to_uid,content,result,created_time)
 		功能实现:
