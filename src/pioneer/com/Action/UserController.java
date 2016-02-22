@@ -45,9 +45,10 @@ public class UserController {
 	{
 		System.out.println("这是ajax请求:朋友圈"+uid);
 		ModelAndView models = new ModelAndView("userfriends");
+		String uidlist=userPmService.getPraiseUidList(1);
 		List<PMoods> moods=userPmService.getMoodlistByUidPage(Integer.parseInt(uid), 0, 5);
 		return models.addObject("moodlist",moods)
-				.addObject("page",1).addObject("uid",uid);
+			.addObject("page",1).addObject("uid",uid).addObject("praisedUidlist",uidlist);
 	}
 	//个人状态
 	@RequestMapping(value="/ajaxpersonalstat",method= RequestMethod.POST)
@@ -91,7 +92,7 @@ public class UserController {
 	@ResponseBody
 	public String ajaxpraised(String mid,String uid){
 		System.out.println(mid+","+uid);
-		boolean rs=userPmService.updatePraiseTime(Integer.parseInt(mid),Integer.parseInt(uid));
+		boolean rs=RequestMethod.updatePraiseTime(Integer.parseInt(mid),Integer.parseInt(uid));
 		return rs ?"1":"0";
 	}
 }

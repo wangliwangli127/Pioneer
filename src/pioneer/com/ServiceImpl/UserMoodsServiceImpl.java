@@ -29,5 +29,9 @@ public class UserMoodsServiceImpl implements UserMoodsService {
 		}
 		userPMoodDao.updateMoodUidList(mid, uid+",");
 		return userPMoodDao.updateMoodPraisedTimes(mid);
-	}	
+	}
+	@Override
+	public String getPraiseUidList(int mid){
+		return userPMoodDao.getMoodsCommentUidList(mid);
+	}
 }

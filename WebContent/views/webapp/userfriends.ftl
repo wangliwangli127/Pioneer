@@ -18,9 +18,15 @@
 					<font class="gray">时间-${m.createdTime}</font>
 					<img src="../css/images/read_icon.png" alt="浏览次数" title="浏览次数" style="float:left; margin:8px 6px 0 20px;">
 					<font class="gray">浏览次数-1</font>
-					<a name="favour" href="javascript:praise(${m.MId},${uid})" class="praisebtn">
-						<img src="../css/images/fot_heart_icon.png" alt="点赞" title="点赞">
-					</a>
+					<#if ${praisedUidlist?index_of(${m.UId}+",")}>=0 >
+						<a name="favour" href="javascript:alert("已赞！")" >	
+							<img src="../css/images/red_heart_icon.png" alt="已赞" title="已赞">
+						</a>
+					<#else>
+						<a name="favour" href="javascript:praise(${m.MId},${uid})" class="praisebtn">	
+							<img src="../css/images/fot_heart_icon.png" alt="点赞" title="点赞">
+						</a>
+					</#if>
 					<font class="gray" id="p${m.MId}">点赞次数-${m.moodsinfo.praisedTimes}</font>
 				</div>
 				<!-- 评论点赞 -->
@@ -32,7 +38,7 @@
 	<div class="clear"></div>
 	<div id="more">
 		<div class="clear"></div>
-		
+
 		<div class="loading_btn">
 			<#if (moodlist?size>0) >	
 			<a href="javascript:;" onclick="loadPage('all',${uid},${page});">加载更多</a>
