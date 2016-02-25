@@ -11,5 +11,5 @@ import pioneer.com.Entity.PUsers;
 public interface UserMoodsService {
 	public List<PMoods> getMoodlistByUidPage(int uid,int startindex,int pagesize);
 	public boolean updatePraiseTime(int mid,int uid);
-	
+	public String getPraiseUidList(int mid);	
 }

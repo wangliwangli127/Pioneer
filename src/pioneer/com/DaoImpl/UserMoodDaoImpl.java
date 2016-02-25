@@ -31,19 +31,27 @@ public class UserMoodDaoImpl extends HibernateDaoSupport implements UserMoodDao{
 			return false;
 		}
 	}
-
+	@Override
+	public List<Integer> getFriendIdlistByuid(int uid){
+		Session session=this.getHibernateTemplate().getSessionFactory().openSession();
+		Query q=session.createQuery("select FUid from PFriendRelation where UUid=? and isFriends=1 and isShield=0");
+		q.setInteger(0,uid);
+		List<Integer> idlist=q.list();
+		session.close();
+		return idlist;
+	}
 	@Override
 	public List<PMoods> getUsersMoodByuidpage(int uid, int pageindex, int pagesize) {
+		List<Integer> idlist=this.getFriendIdlistByuid(uid);
 		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
-		Query q = session.createQuery("from PMoods where FUid=?");
-		q.setInteger(0, uid);
+		Query q = session.createQuery("from PMoods where FUid in (:idlist) and isPublic=1");
+		q.setParameterList("idlist", idlist);
 		q.setFirstResult(pageindex*pagesize);//设置起始行
 		q.setMaxResults(pagesize);//每页条数
 		List<PMoods> pagelist = q.list(); //得到每页的数据
 		session.close();//必须关闭
 		return pagelist;
 	}
-
 	@Override
 	public boolean updateMoodPraisedTimes(int mid) {
 		Session session = this.getHibernateTemplate().getSessionFactory().openSession();

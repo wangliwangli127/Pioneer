@@ -193,6 +193,18 @@ function praise(mid,uid) {
 				pobj.innerHTML=strlist[0]+"-"+times;
 			}
 		}
-	});	
-
+	});
+}
+//定时刷新
+function fresh_per_time (uid) {
+	$.ajax({
+		type:"get",
+		url:"/Pioneer/ajaxfresh/",
+		data:{"uid":uid},
+		dataType:'text',
+		success:function(data){
+			//var json = eval("(" + data + ")");
+			// alert(json)
+		}
+	});
 }

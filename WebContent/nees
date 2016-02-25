@@ -55,7 +55,7 @@ p_clickdailyRecord(r_id,browsedTimes,praisedTimes,comment,clickdate)
 			4,p_systeminfo(uid,pagesize)
 			5,p_message(from_uid,to_uid,content,result,created_time)
 		功能实现:
-			1,login以后,通过uid 查询p_friendsRelation(uid=uid,is_shield=0,is_friends=1)的f_uid,根据f_uid查询p_moods中的记录显示
+			1,login以后,通过uid 查询p_friendsRelation(uid=uid,S=0,is_friends=1)的f_uid,根据f_uid查询p_moods中的记录显示
 			  同时，根据to_uid=uid查看p_message中的内容，查看收到的消息
 			2,每次显示的条数从p_systeminfo.pagesize获取即可
 			3.当单击"加载更多",发送ajax请求,追加数据即可
@@ -93,7 +93,7 @@ p_clickdailyRecord(r_id,browsedTimes,praisedTimes,comment,clickdate)
 				1，从p_systeminfo中查询f_uid这个用户的信息，看是个人信息是否公开，否允许添加，如果不允许添加，则提示,
 				2，发送请求，如果通过，则设置is_shield,is_frieds,is_pass后p_friendRelation中添加一条数据，拒绝，则is_pass=0
 				3，无论添加或拒绝，p_message都应该有条消息，推送到用户
-			 			
+
 发说说	
 		涉及表:
 			1,p_moods(m_id,f_uid,mcontent,created_time,is_public,is_forward)
@@ -108,7 +108,7 @@ p_clickdailyRecord(r_id,browsedTimes,praisedTimes,comment,clickdate)
 			p_phonocate(cateid,name,uid,is_public,password)
 			p_album(id,cateid,picurl)
 			p_clickalbum(a_id,browsedTimes,praisedTimes,comment,clickdate)
-
+			
 发日志
 		功能:
 			日志（同上）
@@ -121,3 +121,5 @@ p_clickdailyRecord(r_id,browsedTimes,praisedTimes,comment,clickdate)
 		功能实现:
 			login后提示空间动态消息	
 其他：待定
+
+流程图设置：画出流程图

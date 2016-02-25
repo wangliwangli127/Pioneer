@@ -13,4 +13,5 @@ public interface UserMoodDao {
 	public String getMoodsCommentUidList(int mid);
 	public boolean updateMoodUidList(int mid,String uidlist);
 	public List<PMoods>  getUsersMoodByuidpage(int uid,int pageindex,int pagesize);
+	public List<Integer> getFriendIdlistByuid(int uid);
 }
