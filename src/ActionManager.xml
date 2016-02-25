@@ -30,4 +30,12 @@
 	</bean>
 	<!-- end -->
 	
+	<!--message-->
+	<bean id="usermailService" class="pioneer.com.ServiceImpl.UserEmailServiceImpl">
+		<property name="emailDao" ref="emailDao"/>
+	</bean>
+	<bean id="emailDao" class="pioneer.com.DaoImpl.UserMailDaoImpl">
+		<property name="sessionFactory"  ref="sessionFactory"/>
+	</bean>
+	<!--end message-->
 </beans> 

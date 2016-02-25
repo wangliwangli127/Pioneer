@@ -1,4 +1,4 @@
-<#list moodlist as m>
+  <#list moodlist as m>
 	<div class="right_item" data-favour="true">
 		<div class="right_item_content">
 			<div class="right_item_name">
@@ -9,6 +9,7 @@
 					${m.mcontent}
 				</p>
 			</div>
+
 			<div class="right_item_pic">
 				<img onclick="" src="http://223.202.119.52/static/newsimg/201601/1958748758_14540433933270.8838866919292535_m.jpg">
 			</div>
@@ -18,13 +19,13 @@
 					<font class="gray">时间-${m.createdTime}</font>
 					<img src="../css/images/read_icon.png" alt="浏览次数" title="浏览次数" style="float:left; margin:8px 6px 0 20px;">
 					<font class="gray">浏览次数-1</font>
-					<#if ${praisedUidlist?index_of(${m.UId}+",")}>=0 >
-						<a name="favour" href="javascript:alert("已赞！")" >	
-							<img src="../css/images/red_heart_icon.png" alt="已赞" title="已赞">
+					<#if m.moodsinfo.UIdList?index_of(m.FUid+",")!=-1>
+						<a name="favour" href="javascript:alert("已赞！")" class="praisebtn_1">	
+							<img src="../css/images/red_heart_icon.png" alt="已赞" title="已赞"/>
 						</a>
 					<#else>
 						<a name="favour" href="javascript:praise(${m.MId},${uid})" class="praisebtn">	
-							<img src="../css/images/fot_heart_icon.png" alt="点赞" title="点赞">
+							<img src="../css/images/fot_heart_icon.png" alt="点赞" title="点赞"/>
 						</a>
 					</#if>
 					<font class="gray" id="p${m.MId}">点赞次数-${m.moodsinfo.praisedTimes}</font>
@@ -88,15 +89,28 @@
 <script type="text/JavaScript">
 	$(function() {
 		$(".praisebtn").click(function() {
-			$(this).find("img").attr('src',"../css/images/red_heart_icon.png"); 
-			$.tipsBox({
-				obj: $(this),
-				str: "赞+1",
-                callback: function() {
-                    //alert(5);
-                }
-			});
+			var className=$(this).attr("class")
+			if (className == "praisebtn"){
+				$(this).find("img").attr('src',"../css/images/red_heart_icon.png"); 
+				$.tipsBox({
+					obj: $(this),
+					str: "赞+1",
+	                callback: function() {
+	                }
+				});
+				$(this).attr("class","praisebtn_1")
+			}else{
+				$(this).find("img").attr('src',"../css/images/fot_heart_icon.png"); 
+				$.tipsBox({
+					obj: $(this),
+					str: "赞-1",
+	                callback: function() {
+	                }
+				});
+				$(this).attr("class","praisebtn")				
+			}
 		});
+
 	});
 </script>
 					

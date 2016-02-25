@@ -9,18 +9,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.sf.json.JSONArray;
+import pioneer.com.Entity.PMessage;
 import pioneer.com.Entity.PMoods;
 import pioneer.com.Entity.PUsers;
+import pioneer.com.Service.UserMailService;
 import pioneer.com.Service.UserMoodsService;
 import pioneer.com.Service.UserService;
 
 @Controller
-public class UserController {
+public class UserController {	
 	@Resource(name="userService")
 	private UserService  userservice;
 	
 	@Resource(name="userMoodService")
 	private UserMoodsService userPmService;
+	
+	@Resource(name="usermailService")
+	private UserMailService emailService;
 	
 	@RequestMapping("/index")
 	public ModelAndView index(){
@@ -34,7 +40,9 @@ public class UserController {
 		ModelAndView models = new ModelAndView("users");
 		PUsers u=userservice.getUserByName(user.getUsername());
 		if (u !=null){
-			return models.addObject("user",u);
+			//信息
+			List<PMessage> msglist=emailService.getEmailList(u.getUId());
+			return models.addObject("user",u).addObject("msglist",msglist);
 		}else{
 			return new ModelAndView("redirect:/index/");
 		}
@@ -45,10 +53,12 @@ public class UserController {
 	{
 		System.out.println("这是ajax请求:朋友圈"+uid);
 		ModelAndView models = new ModelAndView("userfriends");
-		String uidlist=userPmService.getPraiseUidList(1);
-		List<PMoods> moods=userPmService.getMoodlistByUidPage(Integer.parseInt(uid), 0, 5);
+		Integer userid=Integer.parseInt(uid);
+		//说说
+		List<PMoods> moods=userPmService.getMoodlistByUidPage(userid, 0, 5);
+ 
 		return models.addObject("moodlist",moods)
-			.addObject("page",1).addObject("uid",uid).addObject("praisedUidlist",uidlist);
+			.addObject("page",1).addObject("uid",uid);
 	}
 	//个人状态
 	@RequestMapping(value="/ajaxpersonalstat",method= RequestMethod.POST)
@@ -92,7 +102,14 @@ public class UserController {
 	@ResponseBody
 	public String ajaxpraised(String mid,String uid){
 		System.out.println(mid+","+uid);
-		boolean rs=RequestMethod.updatePraiseTime(Integer.parseInt(mid),Integer.parseInt(uid));
-		return rs ?"1":"0";
+		boolean rs=userPmService.updatePraiseTime(Integer.parseInt(mid),Integer.parseInt(uid));
+		return rs ? "1":"0";
+	}
+	@RequestMapping(value="/ajaxfresh",method=RequestMethod.GET)
+	@ResponseBody
+	public String ajaxfresh(String uid){
+		List<PMessage> msglist=emailService.getEmailList(Integer.parseInt(uid));
+		JSONArray jsonArray2 = JSONArray.fromObject( msglist );	
+		return jsonArray2.toString();
 	}
 }

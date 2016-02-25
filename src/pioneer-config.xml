@@ -95,5 +95,6 @@
 	<mvc:resources mapping="/jqvmap/**"  location="/resources/jqvmap/"/>
 	<!-- 支持上传文件 -->  
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/> 
+    <!--dao,service配置-->
 	<import resource="ActionManager.xml"/>
 </beans> 

@@ -9,5 +9,7 @@
 		<mapping resource="pioneer/com/Entity/PUsers.hbm.xml"/>
 		<mapping resource="pioneer/com/Entity/PMoods.hbm.xml"/>
 		<mapping resource="pioneer/com/Entity/PClickmoods.hbm.xml"/>
+		<mapping resource="pioneer/com/Entity/PFriendRelation.hbm.xml"/>
+		<mapping resource="pioneer/com/Entity/PMessage.hbm.xml"/>
     </session-factory> 
 </hibernate-configuration>

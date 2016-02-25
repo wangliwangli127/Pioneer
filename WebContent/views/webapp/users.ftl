@@ -39,6 +39,31 @@
 						<p>推荐1</p>
 						<p>推荐1</p>
 						<p>推荐1</p>
+						<p>
+							<a href="#"><img src="../img/mail.gif"/></a>
+							<a herf="#"><img src="../img/41.gif"/></a>
+							<style type="text/css">
+								a{cursor:pointer;}
+							</style>
+							<#if (msglist?size>0) >	
+							 	You have an message!
+							<div id="msgid">
+								<#list msglist as msg>
+									${msg_index},${msg.content}<br/>
+								</#list>
+							</div>
+							 <script type="text/javascript">
+							 	window.setInterval(showalert, 1000);
+									function showalert()
+									{
+										fresh_per_time (${user.UId})
+									}
+							 </script>
+							<#else>
+								no any moods!	
+							</#if>
+
+						</p>
 					</div>
 				</div>					 
 				<!--end leftmenu-->
