@@ -47,22 +47,22 @@
 							</style>
 							<#if (msglist?size>0) >	
 							 	You have an message!
-							<div id="msgid">
-								<#list msglist as msg>
-									${msg_index},${msg.content}<br/>
-								</#list>
-							</div>
-							 <script type="text/javascript">
-							 	window.setInterval(showalert, 1000);
-									function showalert()
-									{
-										fresh_per_time (${user.UId})
-									}
-							 </script>
+								<div id="msgid">
+									<#list msglist as msg>
+										${msg_index},${msg.content}<br/>
+									</#list>
+								</div>
+								<script type="text/javascript">
+										window.setInterval(showmsg, 2000);
+										function showmsg()
+										{
+											fresh_per_time (${user.UId})
+										}
+								</script>
 							<#else>
 								no any moods!	
 							</#if>
-
+							
 						</p>
 					</div>
 				</div>					 

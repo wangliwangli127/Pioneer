@@ -105,11 +105,82 @@ public class UserController {
 		boolean rs=userPmService.updatePraiseTime(Integer.parseInt(mid),Integer.parseInt(uid));
 		return rs ? "1":"0";
 	}
+	//定时刷新
 	@RequestMapping(value="/ajaxfresh",method=RequestMethod.GET)
 	@ResponseBody
 	public String ajaxfresh(String uid){
 		List<PMessage> msglist=emailService.getEmailList(Integer.parseInt(uid));
-		JSONArray jsonArray2 = JSONArray.fromObject( msglist );	
-		return jsonArray2.toString();
+		JSONArray jsonarray = JSONArray.fromObject( msglist );
+		return jsonarray.toString();
+	}
+	//系统信息
+	@RequestMapping(value="/ajaxsetsystem",method=RequestMethod.GET)
+	public String ajaxsetsystem(String uid){
+		return null;
+	}
+	//评论
+	@RequestMapping(value="/ajaxcomment",method=RequestMethod.GET)
+	public boolean ajaxcomment(String uid,String commentid){
+		return false;
+	}
+	//发说说
+	@RequestMapping(value="/ajaxpubmoods",method=RequestMethod.GET)
+	public String ajaxpublicmoods(PMoods pmood){
+		return null;
+	}
+	//日志
+	@RequestMapping(value="/ajaxwdayrecord",method=RequestMethod.GET)
+	public String ajaxwdayrecord(){
+		return null;
+	}
+	//照片
+	@RequestMapping(value="/ajaxphone",method=RequestMethod.GET)
+	public String ajaxphone(){
+		return null;
+	}
+	//设置皮肤
+	@RequestMapping(value="/ajaxsetskin")
+	public String ajaxsetskin(){
+		return null;
+	}
+	//设置密码
+	@RequestMapping(value="/ajaxsetpwd",method=RequestMethod.GET)
+	public String ajaxsetpwd(){
+		return null;
+	}
+	//设置menu
+	@RequestMapping(value="/ajaxsetmenu",method=RequestMethod.GET)
+	public String ajaxsetmenu(){
+		return null;
+	}
+	//设置banner
+	@RequestMapping(value="/ajaxsetbanner",method=RequestMethod.GET)
+	public String ajaxsetbanner(){
+		return null;
+	}
+	//上传文件
+	@RequestMapping(value="/ajaxupload",method=RequestMethod.GET)
+	public String ajaxupload(){
+		return null;
+	}
+	//邀请好友
+	@RequestMapping(value="/ajaxaddfriend",method=RequestMethod.GET)
+	public String ajaxaddfriend(){
+		return null;
+	}
+	//发送邮件
+	@RequestMapping(value="/ajaxsendemail",method=RequestMethod.GET)
+	public void ajaxsendemail(){
+
+	}
+	//关闭空间
+	@RequestMapping(value="/ajaxclose",method=RequestMethod.GET)
+	public String ajaxclose(String uid){
+		return null;
+	}
+	//退出
+	@RequestMapping(value="/ajaxlogout",method=RequestMethod.GET)
+	public String ajaxlogout(String uid){
+		return null;
 	}
 }
