@@ -92,7 +92,6 @@ function show(i,name,k,uid){
 	}else if("orders" == name){//获取其他信息
 		
 	}
-	
 }
 //menu 滑动css
 window.onload = function(){
@@ -196,15 +195,17 @@ function praise(mid,uid) {
 	});
 }
 //定时刷新
-function fresh_per_time (uid) {
+function fresh_per_time(uid){
 	$.ajax({
 		type:"get",
 		url:"/Pioneer/ajaxfresh/",
 		data:{"uid":uid},
 		dataType:'text',
 		success:function(data){
-			//var json = eval("(" + data + ")");
-			// alert(json)
+			 var jsonarray=eval('(' + data + ')');
+			 for(var o in jsonarray){
+			 	document.getElementById("msgid").innerHTML+=o.content+"<br/>"
+			 }
 		}
 	});
 }

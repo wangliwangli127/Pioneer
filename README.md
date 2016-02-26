@@ -8,7 +8,6 @@
 
   >.hibernate.cfg.xml,hibernate配置文件,其中放着entity.hbm.xml文件
 
-  >.struts.xml，定义拦截器和登陆action配置
 
   >.user.xml,配置相应模块的action，include到structs.xml配置文件中
 
@@ -17,5 +16,5 @@
 注意：
 	1.pioneer.com.ServiceImpl包是实现业务逻辑的地方，业务逻辑相关的都放到这里面，返回数据
 	2.pioneer.com.Action只接受数据和处理数据，不处理业务逻辑
-  	3,所有的ajax请求的控制器名已ajax*开头，user相关的以user*开头,admin管理员开头的admin*开头
+  	3,所有的ajax请求的控制器名和请求路径以ajax*开头，user相关的以user*开头,admin管理员开头的admin*开头
 #========================
