@@ -26,7 +26,7 @@ $(document).ready(function(c) {
  <!--SIGN UP-->
  <h1>Login Form</h1>
 <div class="login-form">
-	<div class="close"> </div>
+	<!--div class="close"> </div-->
 		<div class="head-info">
 			<label class="lbl-1"> </label>
 			<label class="lbl-2"> </label>

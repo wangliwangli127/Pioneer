@@ -1,32 +1,33 @@
 package pioneer.com.Action;
 import java.util.List;
 
-import javax.annotation.Resource;
+import net.sf.json.JSONArray;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import net.sf.json.JSONArray;
 import pioneer.com.Entity.PMessage;
 import pioneer.com.Entity.PMoods;
 import pioneer.com.Entity.PUsers;
-import pioneer.com.Service.UserMailService;
-import pioneer.com.Service.UserMoodsService;
-import pioneer.com.Service.UserService;
+import pioneer.com.Service.impl.IUserMailService;
+import pioneer.com.Service.impl.IUserMoodsService;
+import pioneer.com.Service.impl.IUserService;
 
 @Controller
 public class UserController {	
-	@Resource(name="userService")
-	private UserService  userservice;
 	
-	@Resource(name="userMoodService")
-	private UserMoodsService userPmService;
+	@Autowired
+	public IUserService userService;
 	
-	@Resource(name="usermailService")
-	private UserMailService emailService;
+	@Autowired
+	public IUserMoodsService userMoodsService;
+	
+	@Autowired
+	public IUserMailService userMailService;
 	
 	@RequestMapping("/index")
 	public ModelAndView index(){
@@ -36,12 +37,12 @@ public class UserController {
 	@RequestMapping(value="/loginsucc")
 	public ModelAndView landing(PUsers user)
 	{
-		System.out.println("这是login请求:框架");
+		//System.out.println("这是login请求:框架");
 		ModelAndView models = new ModelAndView("users");
-		PUsers u=userservice.getUserByName(user.getUsername());
+		PUsers u=userService.getUserByName(user.getUsername());
 		if (u !=null){
 			//信息
-			List<PMessage> msglist=emailService.getEmailList(u.getUId());
+			List<PMessage> msglist=userMailService.getEmailList(u.getUId());
 			return models.addObject("user",u).addObject("msglist",msglist);
 		}else{
 			return new ModelAndView("redirect:/index/");
@@ -55,7 +56,7 @@ public class UserController {
 		ModelAndView models = new ModelAndView("userfriends");
 		Integer userid=Integer.parseInt(uid);
 		//说说
-		List<PMoods> moods=userPmService.getMoodlistByUidPage(userid, 0, 5);
+		List<PMoods> moods=userMoodsService.getMoodlistByUidPage(userid, 0, 5);
  
 		return models.addObject("moodlist",moods)
 			.addObject("page",1).addObject("uid",uid);
@@ -93,7 +94,7 @@ public class UserController {
 	public ModelAndView ajaxloadmore(String uid,String page){
 		int pageint=Integer.parseInt(page);
 		ModelAndView models=new ModelAndView("userfriends");
-		List<PMoods> moods=userPmService.getMoodlistByUidPage(Integer.parseInt(uid), pageint, 5);
+		List<PMoods> moods=userMoodsService.getMoodlistByUidPage(Integer.parseInt(uid), pageint, 5);
 		return models.addObject("moodlist",moods)
 				.addObject("page",pageint+1).addObject("uid",uid);
 	}
@@ -102,14 +103,14 @@ public class UserController {
 	@ResponseBody
 	public String ajaxpraised(String mid,String uid){
 		System.out.println(mid+","+uid);
-		boolean rs=userPmService.updatePraiseTime(Integer.parseInt(mid),Integer.parseInt(uid));
+		boolean rs=userMoodsService.updatePraiseTime(Integer.parseInt(mid),Integer.parseInt(uid));
 		return rs ? "1":"0";
 	}
 	//定时刷新
 	@RequestMapping(value="/ajaxfresh",method=RequestMethod.GET)
 	@ResponseBody
 	public String ajaxfresh(String uid){
-		List<PMessage> msglist=emailService.getEmailList(Integer.parseInt(uid));
+		List<PMessage> msglist=userMailService.getEmailList(Integer.parseInt(uid));
 		JSONArray jsonarray = JSONArray.fromObject( msglist );
 		return jsonarray.toString();
 	}

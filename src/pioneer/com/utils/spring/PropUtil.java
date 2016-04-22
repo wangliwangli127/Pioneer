@@ -14,7 +14,7 @@ private static Properties prop ;//= new Properties();
 	public static void load(){
 		try {
 			prop = System.getProperties();
-			String st = "/jdbc.properties";
+			String st = "";//"/jdbc.properties";
 			InputStream is = PropUtil.class.getResourceAsStream(st);
 			prop.load(is);
 		} catch (IOException e) {

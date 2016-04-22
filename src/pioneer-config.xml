@@ -14,8 +14,10 @@
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
         http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
-	<context:component-scan base-package="pioneer.com.*" />
 	<mvc:annotation-driven />
+	<mvc:default-servlet-handler />
+    <context:component-scan base-package="pioneer.com"/>
+    
 	<context:property-placeholder location="classpath:jdbc.properties" system-properties-mode="OVERRIDE" />
 	<!-- 数据库 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
@@ -36,7 +38,7 @@
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate3.SpringSessionContext</prop>
 			</props>
@@ -96,5 +98,5 @@
 	<!-- 支持上传文件 -->  
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/> 
     <!--dao,service配置-->
-	<import resource="ActionManager.xml"/>
+	<!-- <import resource="ActionManager.xml"/> -->
 </beans> 

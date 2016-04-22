@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AdminController {
-
 	@RequestMapping("/admin_index")
 	public ModelAndView index(HttpServletRequest request){
 		ModelAndView models = new ModelAndView("index");

@@ -1,4 +1,4 @@
-package pioneer.com.Service;
+package pioneer.com.Service.impl;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import pioneer.com.Entity.PUsers;
 /*
  * 业务逻辑层次
  */
-public interface UserMailService {
+public interface IUserMailService {
 	public List<PMessage> getEmailList(int uid);
 	 
 }

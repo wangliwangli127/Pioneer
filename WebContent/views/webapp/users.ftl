@@ -18,7 +18,7 @@
 				<div class="left">
 					<!-- user info -->
 					<div class="recom1 left-menu">
-						欢迎<a href="#">${user.username},${user.UId}</a>登陆
+						欢迎<a href="#">${user.username}</a>登陆
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<img scr="../css/images/sys.png"/>						
