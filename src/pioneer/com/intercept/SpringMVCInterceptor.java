@@ -6,6 +6,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import pioneer.com.utils.Constants;
+
+import com.opensymphony.xwork2.ActionContext;
+
 public class SpringMVCInterceptor implements HandlerInterceptor {
 
 	@Override
@@ -24,10 +28,19 @@ public class SpringMVCInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object arg2) throws Exception {
 		// TODO Auto-generated method stub
-//		String url=request.getRequestURL().toString();
-//		if (url.indexOf("ajax") ==-1){
-//			System.out.println("当前请求路径："+request.getRequestURL());
-//		}
+		String url=request.getRequestURL().toString();
+		if ((url.indexOf("Pioneer/index/") > 0)||(url.indexOf("Pioneer/loginsucc/") > 0)
+				||(url.indexOf("Pioneer/img/") > 0)||(url.indexOf("Pioneer/css/") > 0)
+				||(url.indexOf("Pioneer/js/") > 0)||(url.indexOf("Pioneer/font/") > 0)
+				||(url.indexOf("Pioneer/jqvmap/") > 0)){
+			System.out.println("当前请求路径："+request.getRequestURL());
+			return true;
+		}
+		Object obj = ActionContext.getContext().getSession().get(Constants.SESSION_USER);
+		if(obj==null){
+			ActionContext.getContext().put("timeout","登陆超时。");
+			return false;
+		}
 		return true;
 	}
 
