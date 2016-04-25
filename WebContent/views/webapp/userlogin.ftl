@@ -6,10 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <meta name="keywords" content="Flat Dark Web Login Form Responsive Templates, Iphone Widget Template, Smartphone login forms,Login form, Widget Template, Responsive Templates, a Ipad 404 Templates, Flat Responsive Templates" />
+<link href="../img/favicon.ico" rel="" />
 <link href="../css/login.css" rel='stylesheet' type='text/css' />
-<!--webfonts-->
+<!--webfonts--><!-- 
 <link href='http://fonts.useso.com/css?family=PT+Sans:400,700,400italic,700italic|Oswald:400,300,700' rel='stylesheet' type='text/css'>
-<link href='http://fonts.useso.com/css?family=Exo+2' rel='stylesheet' type='text/css'>
+<link href='http://fonts.useso.com/css?family=Exo+2' rel='stylesheet' type='text/css'> -->
 <!--//webfonts-->
 <script src="http://ajax.useso.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 </head>
@@ -28,9 +29,9 @@ $(document).ready(function(c) {
 <div class="login-form">
 	<!--div class="close"> </div-->
 		<div class="head-info">
-			<label class="lbl-1"> </label>
+			<!-- <label class="lbl-1"> </label>
 			<label class="lbl-2"> </label>
-			<label class="lbl-3"> </label>
+			<label class="lbl-3"> </label> -->
 		</div>
 			<div class="clear"> </div>
 	<div class="avtar">

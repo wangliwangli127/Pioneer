@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<link href="../img/favicon.ico" rel="" />
 		<link href="../css/userinfo.css" rel=stylesheet>
 		<link href="../css/my.css" rel=stylesheet>
 		<link href="../css/css.css" rel=stylesheet>
